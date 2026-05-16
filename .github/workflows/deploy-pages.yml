@@ -1,0 +1,43 @@
+# 当源码变更时自动构建并更新 docs/（供 GitHub Pages 使用）。
+# 忽略仅 docs/ 的推送，避免自动提交后再次触发形成循环。
+name: Deploy Pages (docs)
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "docs/**"
+
+concurrency:
+  group: pages-docs-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-commit-docs:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Install & build
+        run: |
+          npm ci
+          npm run build
+
+      - name: Commit docs if changed
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore(pages): rebuild docs for GitHub Pages"
+          file_pattern: "docs/**/*"
+          commit_user_name: "github-actions[bot]"
+          commit_user_email: "41898282+github-actions[bot]@users.noreply.github.com"
