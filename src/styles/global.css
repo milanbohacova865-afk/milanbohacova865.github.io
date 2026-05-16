@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply m-0 min-h-screen font-body text-body-lg text-on-background antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .material-symbols-outlined {
+    font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
+  }
+
+  /* Shared canvas: home_desktop + about_me_desktop ambient */
+  .bg-ambient-page {
+    background-color: #f4f1fa;
+    background-image:
+      radial-gradient(circle at 15% 45%, rgba(218, 38, 118, 0.08) 0%, transparent 52%),
+      radial-gradient(circle at 88% 28%, rgba(99, 14, 212, 0.12) 0%, transparent 50%),
+      radial-gradient(at 0% 0%, rgba(210, 187, 255, 0.45) 0, transparent 48%),
+      radial-gradient(at 100% 100%, rgba(255, 177, 199, 0.4) 0, transparent 48%),
+      linear-gradient(180deg, #fef7ff 0%, #f4f1fa 100%);
+    background-attachment: fixed;
+  }
+
+  .clay-card {
+    box-shadow:
+      15px 15px 30px rgba(0, 0, 0, 0.06),
+      -15px -15px 30px rgba(255, 255, 255, 0.9),
+      inset 3px 3px 6px rgba(255, 255, 255, 0.7),
+      inset -3px -3px 6px rgba(0, 0, 0, 0.04);
+  }
+
+  .clay-shadow {
+    box-shadow:
+      10px 10px 30px rgba(0, 0, 0, 0.08),
+      -10px -10px 30px rgba(255, 255, 255, 0.9),
+      inset 4px 4px 8px rgba(255, 255, 255, 0.7),
+      inset -4px -4px 12px rgba(0, 0, 0, 0.06);
+  }
+
+  .clay-shadow-button {
+    box-shadow:
+      6px 6px 16px rgba(0, 0, 0, 0.1),
+      -6px -6px 16px rgba(255, 255, 255, 0.9),
+      inset 2px 2px 4px rgba(255, 255, 255, 0.5),
+      inset -2px -2px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .clay-shadow-button:active {
+    box-shadow:
+      2px 2px 8px rgba(0, 0, 0, 0.1),
+      -2px -2px 8px rgba(255, 255, 255, 0.9),
+      inset 6px 6px 12px rgba(0, 0, 0, 0.15),
+      inset -6px -6px 12px rgba(255, 255, 255, 0.8);
+    transform: translate(2px, 2px);
+  }
+
+  .clay-orb {
+    box-shadow:
+      8px 8px 16px rgba(0, 0, 0, 0.08),
+      -8px -8px 16px rgba(255, 255, 255, 0.9),
+      inset 2px 2px 5px rgba(255, 255, 255, 0.8),
+      inset -2px -2px 5px rgba(0, 0, 0, 0.06);
+  }
+
+  .clay-pressed {
+    box-shadow:
+      inset 6px 6px 12px rgba(0, 0, 0, 0.08),
+      inset -6px -6px 12px rgba(255, 255, 255, 0.9);
+  }
+
+  .clay-nav-shell {
+    box-shadow:
+      10px 10px 20px rgba(0, 0, 0, 0.1),
+      -10px -10px 20px rgba(255, 255, 255, 0.8),
+      inset 4px 4px 8px rgba(255, 255, 255, 0.6),
+      inset -4px -4px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .clay-hero-panel {
+    box-shadow:
+      20px 20px 50px rgba(99, 14, 212, 0.12),
+      -16px -16px 40px rgba(255, 255, 255, 0.95),
+      inset 8px 8px 16px rgba(255, 255, 255, 0.75),
+      inset -6px -6px 14px rgba(0, 0, 0, 0.04);
+  }
+
+  /* about_me_desktop/code.html */
+  .clay-card-panel {
+    border-radius: 60px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    background-color: rgb(254 247 255 / 0.92);
+    box-shadow:
+      20px 20px 40px rgba(0, 0, 0, 0.05),
+      -10px -10px 40px rgba(255, 255, 255, 0.8),
+      inset 4px 4px 10px rgba(255, 255, 255, 0.7),
+      inset -4px -4px 10px rgba(0, 0, 0, 0.03);
+    backdrop-filter: blur(20px);
+  }
+
+  .clay-card-primary {
+    border-radius: 60px;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    background-color: #7c3aed;
+    box-shadow:
+      20px 20px 40px rgba(99, 14, 212, 0.15),
+      -10px -10px 40px rgba(255, 255, 255, 0.8),
+      inset 4px 4px 10px rgba(255, 255, 255, 0.3),
+      inset -4px -4px 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(12px);
+  }
+
+  .clay-icon-recessed {
+    border-radius: 9999px;
+    background-color: #f3ebfa;
+    box-shadow:
+      inset 6px 6px 12px rgba(0, 0, 0, 0.05),
+      inset -6px -6px 12px rgba(255, 255, 255, 0.8);
+  }
+
+  .qr-dot-grid {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Crect width='20' height='20' fill='none'/%3E%3Ccircle cx='2' cy='2' r='1' fill='%23000' opacity='0.1'/%3E%3C/svg%3E");
+  }
+}
